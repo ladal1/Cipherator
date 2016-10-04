@@ -1,16 +1,4 @@
-def encipher(text, shift, alphabet="abcdefghijklmnopqrstuvwxyz"):
-    # Takes a string, and moves its characters along the alphabet provided, in forward manner
-    result = ""
-    try:
-        for item in text:
-            result += alphabet[alphabet.index(item) + shift]
-    except ValueError:
-        print("Your text includes characters not in the entered (or default) alphabet")
-        pass
-    return result
-
-
-def decipher(text, shift, alphabet="abcdefghijklmnopqrstuvwxyz"):
+def cipher(text, shift, alphabet="abcdefghijklmnopqrstuvwxyz"):
     # Takes a string, and moves its characters along the alphabet provided, in forward manner
     result = ""
     try:
@@ -34,4 +22,3 @@ def bruteforce(text, alphabet="abcdefghijklmnopqrstuvwxyz"):
         print("Your text includes characters not in the entered (or default) alphabet")
         pass
     return result
-
