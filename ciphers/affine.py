@@ -1,4 +1,3 @@
-
 def encipher(a, b, text, alphabet="abcdefghijklmnopqrstuvwxyz"):
     result = ""
     try:
@@ -8,6 +7,7 @@ def encipher(a, b, text, alphabet="abcdefghijklmnopqrstuvwxyz"):
         print("Your text includes characters not in the entered (or default) alphabet")
         pass
     return result
+
 
 def decipher(a, b, text, alphabet="abcdefghijklmnopqrstuvwxyz"):
     result = ""
