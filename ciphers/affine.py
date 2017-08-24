@@ -1,20 +1,27 @@
-def encipher(a, b, text, alphabet="abcdefghijklmnopqrstuvwxyz"):
-    result = ""
-    try:
-        for x in text:
-            result += alphabet[(a * alphabet.index(x) + b)%len(alphabet)]
-    except ValueError:
-        print("Your text includes characters not in the entered (or default) alphabet")
-        pass
-    return result
+from base_cipher import Cipher
 
 
-def decipher(a, b, text, alphabet="abcdefghijklmnopqrstuvwxyz"):
-    result = ""
-    try:
-        for x in text:
-            result += alphabet[(len(alphabet)-a)*(alphabet.index(x)-b)%26]
-    except ValueError:
-        print("Your text includes characters not in the entered (or default) alphabet")
-        pass
-    return result
+class Affine(Cipher):
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+
+    def encipher(self, text):
+        result = ""
+        try:
+            for x in text:
+                result += self.alphabet[(self.a * self.alphabet.index(x) + self.b) % len(self.alphabet)]
+        except ValueError:
+            print("Your text includes characters not in the entered (or default) alphabet")
+            pass
+        return result
+
+    def decipher(self, text):
+        result = ""
+        try:
+            for x in text:
+                result += self.alphabet[(len(self.alphabet)-self.a)*(self.alphabet.index(x)-self.b) % 26]
+        except ValueError:
+            print("Your text includes characters not in the entered (or default) alphabet")
+            pass
+        return result
