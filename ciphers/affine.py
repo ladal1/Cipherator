@@ -15,7 +15,7 @@ class Affine(Cipher):
     def __init__(self, a, b):
         self.a = a
         self.b = b
-        assert 0 < a and 0 <= b and a.is_integer() and b.is_integer(), \
+        assert 0 < a and 0 <= b and type(a) is int and type(b) is int,\
             "Neither of the key components can be negative and a cannot be zero"
 
     def encipher(self, text):
