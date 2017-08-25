@@ -1,16 +1,24 @@
-def encipher(text, passphrase, alphabet="abcdefghijklmnopqrstuvwxyz"):
-    passletter = 0
-    result = ""
-    for x in text:
-        result += alphabet[(alphabet.index(x)+alphabet.index(passphrase[passletter%len(passphrase)]))%len(alphabet)]
-        passletter += 1
-    return result
+from base_cipher import Cipher
 
 
-def decipher(text, passphrase, alphabet="abcdefghijklmnopqrstuvwxyz"):
-    passletter = 0
-    result = ""
-    for x in text:
-        result += alphabet[(alphabet.index(x)-alphabet.index(passphrase[passletter%len(passphrase)]))%len(alphabet)]
-        passletter += 1
-    return result
+class Vignere(Cipher):
+    def __init__(self, passphrase):
+        self.passphrase = passphrase
+
+    def encipher(self, text):
+        passletter = 0
+        result = ""
+        for x in text:
+            result += self.alphabet[(self.alphabet.index(x) + self.alphabet.index(
+                self.passphrase[passletter % len(self.passphrase)])) % len(self.alphabet)]
+            passletter += 1
+        return result
+
+    def decipher(self, text):
+        passletter = 0
+        result = ""
+        for x in text:
+            result += self.alphabet[(self.alphabet.index(x)-self.alphabet.index(
+                self.passphrase[passletter % len(self.passphrase)])) % len(self.alphabet)]
+            passletter += 1
+        return result
